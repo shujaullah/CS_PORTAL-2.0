@@ -1,0 +1,90 @@
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#<title>University Of Massachesetts of Boston</title>#}
+{#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">#}
+{#    <style>#}
+{#        html,body{#}
+{#            width: 100%;#}
+{#            height: 100%;#}
+{#            padding: 0;#}
+{#            margin: 0;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{##}
+{#<body>#}
+{##}
+{##}
+{#<nav class="navbar navbar-light bg-light">#}
+{#  <div class="container-fluid">#}
+{#    <a class="navbar-brand" href="/">University Of Massachusetts Boston-Computer Science Portal- Apply</a>#}
+{#    <a class="nav-link">Name Here</a>#}
+{#  </div>#}
+{#</nav>#}
+{##}
+{#    <nav class="nav flex-column">#}
+{#  <a class="nav-link active" aria-current="page" href="#">Courses</a>#}
+{#  <a class="nav-link" href="/">LogOut</a>#}
+{#  <div id="content" class="w-100 -100 border-left">#}
+{#      {% block content %}#}
+{#          This is amazing.#}
+{#      {% endblock %}#}
+{#  </div>#}
+{##}
+{#</nav>#}
+{#</body>#}
+{##}
+{#</html>#}
+<!DOCTYPE html>
+<html>
+<head>
+<title> {% block title %}University of Massachusetts Boston - Computer Science Portal {% endblock %}</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        html,body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+        .navbar-colors{
+            background: #f8f8f8;
+            font-size: 18px;
+            line-height: 1.42857143;
+            color: #333;
+        }
+        .navbar-secondary{
+            font-size:14px ;
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav class="w-100 border p-1 d-flex navbar-colors flex-md-row flex-column justify-content-between">
+        <a class=" nav-link text-muted" href="/">University of Massachusetts Boston - Computer Science Portal - Apply</a>
+        {# when the user is logged in, show this link        #}
+        {# <a class="nav-link">Name Here</a>#}
+    </nav>
+    <div class="h-100 d-flex flex-md-row flex-column">
+        <nav class=" p-0 navbar-colors navbar-secondary flex-column border-left  col-md-2" >
+            {#  if user is not logged in, the links should be login and register  #}
+                <div><a class=" nav-link active border-bottom" href="/login">Login</a></div>
+                <div><a class=" nav-link active border-bottom" href="/register">Register</a></div>
+            {# <a class="nav-link" href="#">Link</a>#}
+            {# <a class="nav-link disabled" href="#">Disabled</a>#}
+        </nav>
+        <div id="content" class="w-100 h-100 border-left">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    </div>
+
+</ul>
+</body>
+
+</html>
