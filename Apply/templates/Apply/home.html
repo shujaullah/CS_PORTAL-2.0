@@ -70,10 +70,12 @@
         {# <a class="nav-link">Name Here</a>#}
     </nav>
     <div class="h-100 d-flex flex-md-row flex-column">
-        <nav class=" p-0 navbar-colors navbar-secondary flex-column border-left  col-md-2" >
+        <nav class=" nav-pills p-0 navbar-colors navbar-secondary flex-column border-left " style="min-width: 20%" >
             {#  if user is not logged in, the links should be login and register  #}
+            {% block links %}
                 <div><a class=" nav-link active border-bottom" href="/login">Login</a></div>
                 <div><a class=" nav-link active border-bottom" href="/register">Register</a></div>
+            {% endblock %}
             {# <a class="nav-link" href="#">Link</a>#}
             {# <a class="nav-link disabled" href="#">Disabled</a>#}
         </nav>

@@ -1,10 +1,19 @@
 {% extends "Apply/home.html" %}
 {% load crispy_forms_tags %}
+ {% block links %}
+                <div><a class=" nav-link  border-bottom" href="/login">Login</a></div>
+                <div><a class=" nav-link active border-bottom" href="/register">Register</a></div>
+            {% endblock %}
 {% block content %}
-    <h1> Register Here. </h1>
-  <form method="POST" class="form-group">
+    <div class="p-4">
+    <h1> Create your UMB CS Portal Account. </h1>
+  <form method="POST" class="form-group" >
         {% csrf_token %}
         {{form|crispy}}
-        <button type="submit" class="btn btn-primary">Register</button>
+      <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary">Register</button>
+      </div>
+
     </form>
+    </div>
 {% endblock %}
