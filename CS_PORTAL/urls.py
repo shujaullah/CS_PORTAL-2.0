@@ -18,6 +18,7 @@ from django.urls import path
 from Apply import views as v
 from django.urls import include
 from django.contrib.auth import views as b
+from courses import views as c
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +26,6 @@ urlpatterns = [
     path("register/", v.register, name="register"),
     path('login/', b.LoginView.as_view()),
     path('logout/', b.LogoutView.as_view()),
+    path('courses/', c.selectedCourses, name='courses'),
 
 ]
