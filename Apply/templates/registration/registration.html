@@ -1,9 +1,20 @@
 {% extends "Apply/home.html" %}
 {% load crispy_forms_tags %}
- {% block links %}
-                <div><a class=" nav-link  border-bottom" href="/login">Login</a></div>
-                <div><a class=" nav-link active border-bottom" href="/register">Register</a></div>
-            {% endblock %}
+{# {% block links %}#}
+{#                <div><a class=" nav-link  border-bottom" href="/login">Login</a></div>#}
+{#                <div><a class=" nav-link active border-bottom" href="/register">Register</a></div>#}
+{#            {% endblock %}#}
+{#{% block content %}#}
+{% block links %}
+    {% if user.is_authenticated %}
+        <a class=" nav-item nav-link border-bottom" href="/logout">Logout</a>
+    {% else %}
+        <a class=" nav-item nav-link  border-bottom" href="/login">Login</a>
+    {% endif %}
+    <a class="nav-item nav-link active border-bottom" href="/register">Register</a>
+    <a class="nav-item nav-link disabled border-bottom" href="#">Change Password</a>
+    <a class="nav-item nav-link disabled border-bottom" href="#">About Us</a>
+{% endblock %}
 {% block content %}
     <div class="p-4">
     <h1> Create your UMB CS Portal Account. </h1>

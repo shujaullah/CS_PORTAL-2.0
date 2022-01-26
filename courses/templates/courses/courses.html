@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "Apply/home.html" %}
+{% load crispy_forms_tags %}
+{% block  content %}
+    <h1>Please Select the Courses for {{cs}}</h1>
+    <div class="p-4">
+        <form action="/courses/" method="post" class="form-group">
+             {% csrf_token %}
+{#            {{ form|crispy }}#}
+            <table class="table">
+                <thead>
+                     <tr>
+                         <th scope="col">  </th>
+                        <th scope="col">Course Number</th>
+                         <th scope="col">Course Section</th>
+                         <th scope="col">Course Name</th>
+                         <th scope="col">Course Instructor</th>
+    </tr>
+                </thead>
+                <tbody>
+                      {% for ac in ac %}
+
+                    <tr>
+{#                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">#}
+                        <td><input class="form-check-input" type="checkbox" value="{{ac}}" id="flexCheckDefault" name="course"></td>
+                        <td>{{ac.course_number}}</td>
+
+                         <td>{{ac.course_section}}</td>
+                         <td>{{ac.course_name}}</td>
+
+                         <td>{{ac.course_instructor}}</td>
+
+                    </tr>
+                     {% endfor %}
+                </tbody>
+            </table>
+
+            <button type="submit" class="btn btn-primary w-100">
+                Submit
+            </button>
+        </form>
+    </div>
+{% endblock %}

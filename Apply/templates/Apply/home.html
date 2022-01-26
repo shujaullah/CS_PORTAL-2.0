@@ -73,8 +73,16 @@
         <nav class=" nav-pills p-0 navbar-colors navbar-secondary flex-column border-left " style="min-width: 20%" >
             {#  if user is not logged in, the links should be login and register  #}
             {% block links %}
-                <div><a class=" nav-link active border-bottom" href="/login">Login</a></div>
-                <div><a class=" nav-link active border-bottom" href="/register">Register</a></div>
+                {% if user.is_authenticated %}
+                  <div><a class=" nav-link  border-bottom" href="/login">Logout</a></div>
+                {% else %}
+                <div><a class=" nav-link  border-bottom" href="/login">Login</a></div>
+                {% endif %}
+                <div><a class=" nav-link  border-bottom" href="/register">Register</a></div>
+                 <div><a class=" nav-link  border-bottom" href="#r">Change Password</a></div>
+                <div><a class=" nav-link  border-bottom" href="#r">About Us</a></div>
+
+
             {% endblock %}
             {# <a class="nav-link" href="#">Link</a>#}
             {# <a class="nav-link disabled" href="#">Disabled</a>#}
