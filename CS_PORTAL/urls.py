@@ -27,5 +27,7 @@ urlpatterns = [
     path('login/', b.LoginView.as_view()),
     path('logout/', b.LogoutView.as_view()),
     path('courses/', c.selectedCourses, name='courses'),
+    path('remove_c/', c.remove_student, name='remove'),
+
 
 ]

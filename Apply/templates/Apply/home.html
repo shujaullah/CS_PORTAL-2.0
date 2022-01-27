@@ -74,11 +74,13 @@
             {#  if user is not logged in, the links should be login and register  #}
             {% block links %}
                 {% if user.is_authenticated %}
-                  <div><a class=" nav-link  border-bottom" href="/login">Logout</a></div>
+                  <div><a class=" nav-link  border-bottom" href="/logout">Logout</a></div>
+                  <div><a class=" nav-link  border-bottom" href="/courses">Courses</a></div>
                 {% else %}
                 <div><a class=" nav-link  border-bottom" href="/login">Login</a></div>
+                 <div><a class=" nav-link  border-bottom" href="/register">Register</a></div>
                 {% endif %}
-                <div><a class=" nav-link  border-bottom" href="/register">Register</a></div>
+{#                <div><a class=" nav-link  border-bottom" href="/register">Register</a></div>#}
                  <div><a class=" nav-link  border-bottom" href="#r">Change Password</a></div>
                 <div><a class=" nav-link  border-bottom" href="#r">About Us</a></div>
 
@@ -87,7 +89,7 @@
             {# <a class="nav-link" href="#">Link</a>#}
             {# <a class="nav-link disabled" href="#">Disabled</a>#}
         </nav>
-        <div id="content" class="w-100 h-100 border-left">
+        <div id="content" class="p-2 w-100 h-100 border-left">
             {% block content %}
             {% endblock %}
         </div>

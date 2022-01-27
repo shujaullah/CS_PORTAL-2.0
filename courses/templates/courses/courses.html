@@ -1,9 +1,12 @@
 {% extends "Apply/home.html" %}
 {% load crispy_forms_tags %}
+
 {% block  content %}
-    <h1>Please Select the Courses for {{cs}}</h1>
-    <div class="p-4">
+
+    <div class="p-4 d-flex flex-column-reverse">
+
         <form action="/courses/" method="post" class="form-group">
+         <h1>Please Select the Courses for {{cs}}</h1>
              {% csrf_token %}
 {#            {{ form|crispy }}#}
             <table class="table">
@@ -28,6 +31,42 @@
                          <td>{{ac.course_name}}</td>
 
                          <td>{{ac.course_instructor}}</td>
+
+                    </tr>
+                     {% endfor %}
+                </tbody>
+            </table>
+
+            <button type="submit" class="btn btn-primary w-100">
+                Submit
+            </button>
+        </form>
+     <form action="/remove_c/" method="post" class="form-group">
+      <h1>Yours Selected Courses {{cs}}</h1>
+             {% csrf_token %}
+{#            {{ form|crispy }}#}
+            <table class="table">
+                <thead>
+                     <tr>
+                         <th scope="col">  </th>
+                        <th scope="col">Course Number</th>
+                         <th scope="col">Course Section</th>
+                         <th scope="col">Course Name</th>
+                         <th scope="col">Course Instructor</th>
+    </tr>
+                </thead>
+                <tbody>
+                      {% for sc in sc %}
+
+                    <tr>
+{#                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">#}
+                        <td><input class="form-check-input" type="checkbox" value="{{sc}}" id="flexCheckDefault" name="course"></td>
+                        <td>{{sc.course_number}}</td>
+
+                         <td>{{sc.course_section}}</td>
+                         <td>{{sc.course_name}}</td>
+
+                         <td>{{sc.course_instructor}}</td>
 
                     </tr>
                      {% endfor %}

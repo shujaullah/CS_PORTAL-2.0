@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Courses, Semesters
 from django.contrib.auth.models import User
 # Create your views here.
@@ -11,6 +11,7 @@ def selectedCourses(request):
     ac = Courses.objects.all()
     cs = semester_year()
     if request.user.is_authenticated:
+        # grabbing the user that currently logged in.
         user = User.objects.get(username=request.user.username)
         user.save()
         selected_courses = user.courses_set.all()
@@ -25,6 +26,7 @@ def selectedCourses(request):
     else:
         return render(request, 'courses/courses.html', {'cs': cs, 'ac': ac})
 
+
 def semester_year():
     today = datetime.datetime.today()
     year = str(today.year)[2:]
@@ -37,3 +39,12 @@ def semester_year():
         #    else:
         #        semester = 'WI'
     return semester + year
+
+
+def remove_student(request):
+    user = User.objects.get(username=request.user.username)
+    remove_courses = request.POST.getlist('course')
+    for check1 in remove_courses:
+        course = Courses.objects.get(course_name=check1)
+        user.courses_set.remove(course)
+    return redirect('/courses')
